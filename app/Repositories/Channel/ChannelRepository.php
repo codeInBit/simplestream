@@ -13,10 +13,15 @@ class ChannelRepository implements ChannelInterface
      * @param string $date
      * @param string $timezone
      *
-     * @return array
+     * @return object
      */
     public function timetable(object $channel, string $date, string $timezone): object
     {
-        
+        $formattedDate = date('Y-m-d', strtotime($date));
+        $timetable = $channel->timetables()->whereDate('date', $formattedDate)
+            ->where('timezone', $timezone)
+            ->with(['programme'])->get();
+
+        return $timetable;
     }
 }

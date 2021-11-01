@@ -12,7 +12,7 @@ use Throwable;
 trait ApiJsonResponse
 {
     /**
-     * @param string $data
+     * @param mixed $data
      * @param mixed $message
      * @param int $statusCode
      * @return JsonResponse
@@ -31,7 +31,7 @@ trait ApiJsonResponse
     }
 
     /**
-     * @param string $data
+     * @param mixed $data
      * @param mixed $message
      * @param int $statusCode
      * @return JsonResponse

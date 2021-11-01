@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'prefix' => 'channels',
+], function () {
+    Route::get('/', 'ChannelController@channels');
+    Route::get('{channel:uuid}/{date}/timezone/{timezone}', 'ChannelController@timeTable');
 });
